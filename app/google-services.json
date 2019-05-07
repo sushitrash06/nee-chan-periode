@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "197771556692",
+    "firebase_url": "https://nee-chan-periode.firebaseio.com",
+    "project_id": "nee-chan-periode",
+    "storage_bucket": "nee-chan-periode.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:197771556692:android:4dfb0f44c98bafdd",
+        "android_client_info": {
+          "package_name": "com.example.android.nee_chanpriode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "197771556692-ejl7c1uppkeoiugln3j32he33jtsh2n0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.nee_chanpriode",
+            "certificate_hash": "a07f3d6af312b3760cfcb87b84b6c3a9a5d8240d"
+          }
+        },
+        {
+          "client_id": "197771556692-g85lgep9v675k07qlcmqvli1dforgb3m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTdZHAp3DwHzgra-_TPFmVWiSz7IlC8nk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "197771556692-g85lgep9v675k07qlcmqvli1dforgb3m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

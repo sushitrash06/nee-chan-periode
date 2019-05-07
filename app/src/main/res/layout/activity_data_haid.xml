@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".data_haid">
+
+    <TextView
+        android:id="@+id/siklus_haid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Masukan Siklus Haid" />
+
+    <EditText
+        android:id="@+id/ev_siklus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_toRightOf="@id/siklus_haid" />
+
+    <TextView
+        android:id="@+id/lama_haid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/siklus_haid"
+        android:layout_marginTop="44dp"
+        android:text="Masukan Lama Haid :" />
+
+    <EditText
+        android:id="@+id/ev_lamahaid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ev_siklus"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="7dp"
+        android:layout_toRightOf="@id/lama_haid" />
+
+    <TextView
+        android:id="@+id/tanggal_haid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lama_haid"
+        android:layout_marginTop="58dp"
+        android:text="Masukan Tanggal Haid" />
+
+
+    <CalendarView
+        android:id="@+id/dp_tanggalhaid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ev_lamahaid"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="71dp"
+        android:layout_toRightOf="@id/tanggal_haid"/>
+
+    <Button
+        android:id="@+id/btn_InputData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:text="Masukan Data" />
+
+
+</RelativeLayout>
