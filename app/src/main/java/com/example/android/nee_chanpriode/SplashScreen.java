@@ -5,8 +5,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
-public class splash extends AppCompatActivity {
-    private int waktu_loading=3000;
+public class SplashScreen extends AppCompatActivity {
+    private int waktu_loading = 3000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,12 +17,12 @@ public class splash extends AppCompatActivity {
             public void run() {
 
 
-                Intent home=new Intent(splash.this, Login.class);
+                Intent home = new Intent(SplashScreen.this, LoginActivity.class);
                 startActivity(home);
                 finish();
 
             }
-        },waktu_loading);
+        }, waktu_loading);
     }
-    }
+}
 

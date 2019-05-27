@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/Background"
     android:padding="24dp"
-    tools:context=".Login">
+    tools:context=".LoginActivity">
 
     <com.google.android.gms.common.SignInButton
         android:layout_width="wrap_content"

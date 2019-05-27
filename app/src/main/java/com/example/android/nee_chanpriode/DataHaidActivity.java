@@ -1,8 +1,10 @@
  package com.example.android.nee_chanpriode;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -10,8 +12,10 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.android.nee_chanpriode.CalendarLib.CalendarActivity;
 import com.example.android.nee_chanpriode.Model.PeriodeHaid;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,17 +28,20 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
-public class data_haid extends AppCompatActivity {
+public class DataHaidActivity extends AppCompatActivity {
 
     private EditText editSiklus,editJmlHaid;
-    private CalendarView datePicker;
+//    private CalendarView datePicker;
+    private DatePicker datePicker;
     private Button btnInput;
+
 
     FirebaseDatabase mDatabase;
     DatabaseReference myRef;
     FirebaseAuth mFirebaseAuth;
 
     GoogleSignInClient mGoogleSignInClient;
+    FirebaseUser user;
 
     String mTanggal;
 
@@ -45,7 +52,7 @@ public class data_haid extends AppCompatActivity {
 
 
         mFirebaseAuth = FirebaseAuth.getInstance();
-        final FirebaseUser user = mFirebaseAuth.getCurrentUser();
+        user = mFirebaseAuth.getCurrentUser();
 
 
         mDatabase = FirebaseDatabase.getInstance();
@@ -54,27 +61,12 @@ public class data_haid extends AppCompatActivity {
         // inisialisasi komponen
         editSiklus = findViewById(R.id.ev_siklus);
         editJmlHaid = findViewById(R.id.ev_lamahaid);
-        datePicker = findViewById(R.id.dp_tanggalhaid);
+
+
+        datePicker = findViewById(R.id.data_haid_date_picker);
         btnInput = findViewById(R.id.btn_InputData);
 
 
-
-        datePicker.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
-                String tanggal = String.valueOf(year)+"/"
-                        + String.valueOf(month)+"/"
-                        + String.valueOf(day);
-
-                mTanggal = tanggal;
-            }
-        });
-//        Date dt = getDateFromDatePicker(datePicker);
-
-
-
-        // format tanggal
-//
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -86,7 +78,12 @@ public class data_haid extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(data_haid.this, mTanggal ,Toast.LENGTH_SHORT).show();
+                mTanggal = datePicker.getYear()+"/"
+                        + (datePicker.getMonth() + 1)+"/"
+                        + datePicker.getDayOfMonth();
+
+                Toast.makeText(DataHaidActivity.this, mTanggal ,Toast.LENGTH_SHORT).show();
+
                 newPeriod(user.getUid()
                         , Integer.parseInt(editSiklus.getText().toString())
                         , Integer.parseInt(editJmlHaid.getText().toString())
@@ -94,6 +91,15 @@ public class data_haid extends AppCompatActivity {
 //
             }
         });
+
+        if(!myRef.child(user.getUid()).toString().isEmpty()){
+            Intent i = new Intent(DataHaidActivity.this, MainActivity.class);
+            startActivity(i);
+            finish();
+        }
+
+        Log.v("DataHaidActivity","db "+ myRef.toString());
+        Log.v("DataHaidActivity", "auth "+user.getUid());
 
 
     }
@@ -106,12 +112,12 @@ public class data_haid extends AppCompatActivity {
         myRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Toast.makeText(data_haid.this, "Berhasil Ditambahkan", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DataHaidActivity.this, "Berhasil Ditambahkan", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(data_haid.this, "Gagal Ditambahkan", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DataHaidActivity.this, "Gagal Ditambahkan", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -126,4 +132,5 @@ public class data_haid extends AppCompatActivity {
 
         return calendar.getTime();
     }
+
 }

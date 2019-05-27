@@ -1,67 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".data_haid">
+    tools:context=".DataHaidActivity">
 
-    <TextView
-        android:id="@+id/siklus_haid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Masukan Siklus Haid" />
 
-    <EditText
-        android:id="@+id/ev_siklus"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
-        android:layout_toRightOf="@id/siklus_haid" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".DataHaidActivity">
 
-    <TextView
-        android:id="@+id/lama_haid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/siklus_haid"
-        android:layout_marginTop="44dp"
-        android:text="Masukan Lama Haid :" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-thin"
+            android:textAllCaps="true"
+            android:text="Input data haid"/>
 
-    <EditText
-        android:id="@+id/ev_lamahaid"
+        <TextView
+            android:id="@+id/siklus_haid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Masukan Siklus Haid"
+            />
+
+        <EditText
+            android:id="@+id/ev_siklus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/lama_haid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/siklus_haid"
+            android:text="Masukan Lama Haid :" />
+
+        <EditText
+            android:id="@+id/ev_lamahaid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tanggal_haid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Masukan Tanggal Pertama Haid" />
+
+
+        <DatePicker
+            android:layout_gravity="center"
+            android:id="@+id/data_haid_date_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:datePickerMode="calendar"
+            />
+
+        <!--<CalendarView
+            android:id="@+id/dp_tanggalhaid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            />-->
+
+
+    </LinearLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ev_siklus"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="7dp"
-        android:layout_toRightOf="@id/lama_haid" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tanggal_haid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/lama_haid"
-        android:layout_marginTop="58dp"
-        android:text="Masukan Tanggal Haid" />
+        <!--<Button
+            android:id="@+id/btnAsal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/btn_InputData"
+            android:text="klik aja dah"/>-->
 
+        <Button
+            android:id="@+id/btn_InputData"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="SAVE"
+            android:layout_alignParentBottom="true"/>
 
-    <CalendarView
-        android:id="@+id/dp_tanggalhaid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ev_lamahaid"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="71dp"
-        android:layout_toRightOf="@id/tanggal_haid"/>
-
-    <Button
-        android:id="@+id/btn_InputData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:text="Masukan Data" />
-
-
-</RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>

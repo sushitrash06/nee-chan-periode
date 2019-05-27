@@ -1,8 +1,8 @@
 package com.example.android.nee_chanpriode.Model;
 
 public class PeriodeHaid {
-    private String uid;
-    private int siklus,jml_hari;
+    private int siklus;
+    private int jml_hari;
     private String tgl_haid;
 
     public PeriodeHaid(int siklus, int jml_hari, String tgl_haid) {
@@ -11,9 +11,7 @@ public class PeriodeHaid {
         this.tgl_haid = tgl_haid;
     }
 
-    public String getUid() {
-        return uid;
-    }
+    public PeriodeHaid(){}
 
     public int getSiklus() {
         return siklus;

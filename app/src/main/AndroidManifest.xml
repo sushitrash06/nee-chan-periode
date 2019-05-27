@@ -8,22 +8,38 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Main2Activity"></activity>
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".navigasi"
             android:label="@string/title_activity_navigasi"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".data_haid" />
-        <activity android:name=".splash">
+
+        <activity android:name=".DataHaidActivity" >
+
+
+        </activity>
+
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login" />
-        <activity android:name=".MainActivity" />
-    </application>
 
+        <activity android:name=".LoginActivity" >
+
+        </activity>
+        <activity android:name=".MainActivity" >
+
+        </activity>
+        <activity android:name=".ActivityCalendar">
+
+        </activity>
+        <activity android:name=".CalendarLib.CalendarActivity">
+
+
+
+        </activity>
+    </application>
 </manifest>
