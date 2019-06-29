@@ -58,6 +58,10 @@ public class DataHaidActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance();
         myRef = mDatabase.getReference("Periode");
 
+
+
+
+
         // inisialisasi komponen
         editSiklus = findViewById(R.id.ev_siklus);
         editJmlHaid = findViewById(R.id.ev_lamahaid);
@@ -92,11 +96,23 @@ public class DataHaidActivity extends AppCompatActivity {
             }
         });
 
-        if(!myRef.child(user.getUid()).toString().isEmpty()){
-            Intent i = new Intent(DataHaidActivity.this, MainActivity.class);
-            startActivity(i);
-            finish();
-        }
+        myRef.child(mFirebaseAuth.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    Intent i = new Intent(DataHaidActivity.this, MainActivity.class);
+                    startActivity(i);
+                    finish();
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         Log.v("DataHaidActivity","db "+ myRef.toString());
         Log.v("DataHaidActivity", "auth "+user.getUid());
