@@ -1,21 +1,18 @@
  package com.example.android.nee_chanpriode;
 
-import android.content.Intent;
+ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.android.nee_chanpriode.CalendarLib.CalendarActivity;
 import com.example.android.nee_chanpriode.Model.PeriodeHaid;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -137,6 +134,27 @@ public class DataHaidActivity extends AppCompatActivity {
             }
         });
     }
+
+    /// private void updateData(periode periode) {
+
+        /// mDatabase.child("periode")
+            //    .child(periode.getKey())
+              //  .setValue(periode)
+                // .addOnSuccessListener(this, new OnSuccessListener<Void>() {
+                   // @Override
+                    // public void onSuccess(Void aVoid) {
+
+                       // Snackbar.make(findViewById(R.id.btn_InputData), "Data berhasil diupdatekan", Snackbar.LENGTH_LONG).setAction("Oke", new View.OnClickListener() {
+                         //   @Override
+                           // public void onClick(View view) {
+                             //   finish();
+                            // }
+                       // }).show();
+                   // }
+                // });
+    // }
+
+
 
     public static java.util.Date getDateFromDatePicker(DatePicker datePicker){
         int day = datePicker.getDayOfMonth();

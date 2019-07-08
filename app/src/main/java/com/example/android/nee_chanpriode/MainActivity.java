@@ -7,6 +7,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -57,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         // [START: INIT FIREBASE]
         mAuth = FirebaseAuth.getInstance();
@@ -165,6 +170,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         calendarView.updateCalendar(events);
 
+
+
         calendarView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -211,6 +218,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent i = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(i);
         finish();
+
+
     }
 
     public void readData(final MyCallback callback){
@@ -295,4 +304,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.navigasi, menu);
+        //getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==R.id.bt_about){
+            startActivity(new Intent(this, AboutActivity.class));
+        } else if (item.getItemId() == R.id.bt_update) {
+            startActivity(new Intent(this, DataHaidActivity.class));
+        } else if (item.getItemId() == R.id.btnLogout) {
+            startActivity(new Intent(this, MainActivity.class));
+        }
+
+        return true;
+    }
 }
+
+

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UpdateActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".UpdateActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-thin"
+            android:textAllCaps="true"
+            android:text="Input data haid"/>
+
+        <TextView
+            android:id="@+id/siklus_haid1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Masukan Siklus Haid"
+            />
+
+        <EditText
+            android:id="@+id/ev_siklus1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/lama_haid1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/siklus_haid1"
+            android:text="Masukan Lama Haid :" />
+
+        <EditText
+            android:id="@+id/ev_lamahaid1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tanggal_haid2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Masukan Tanggal Pertama Haid" />
+
+
+        <DatePicker
+            android:layout_gravity="center"
+            android:id="@+id/data_haid_date_picker1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:datePickerMode="calendar"
+            />
+
+        <!--<CalendarView
+            android:id="@+id/dp_tanggalhaid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            />-->
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--<Button
+            android:id="@+id/btnAsal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/btn_InputData"
+            android:text="klik aja dah"/>-->
+
+        <Button
+            android:id="@+id/btn_updateData"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="UPDATE"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+</FrameLayout>
