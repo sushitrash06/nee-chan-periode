@@ -28,7 +28,7 @@ import java.util.Calendar;
 public class DataHaidActivity extends AppCompatActivity {
 
     private EditText editSiklus,editJmlHaid;
-//    private CalendarView datePicker;
+//  private CalendarView datePicker;
     private DatePicker datePicker;
     private Button btnInput;
 
