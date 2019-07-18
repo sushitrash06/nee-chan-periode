@@ -42,11 +42,18 @@ public class DataHaidActivity extends AppCompatActivity {
 
     String mTanggal;
 
+    String code = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_haid);
 
+        Bundle extras = getIntent().getExtras();
+        if(extras == null){
+            code = null;
+        }else {
+            code = extras.getString("UPDATE");
+        }
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         user = mFirebaseAuth.getCurrentUser();
@@ -96,11 +103,10 @@ public class DataHaidActivity extends AppCompatActivity {
         myRef.child(mFirebaseAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
+                if(dataSnapshot.exists()&& code == null){
                     Intent i = new Intent(DataHaidActivity.this, MainActivity.class);
                     startActivity(i);
                     finish();
-
 
                 }
             }

@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     HashSet<Date> events = new HashSet<>();
 
-    Button btn;
+    Button btn, btnUpdate;
 
 
     GoogleSignInClient mGoogleSignInClient;
@@ -114,6 +114,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         btn.setOnClickListener(this);
 
+        btnUpdate = findViewById(R.id.btnUpdate);
+        btnUpdate.setOnClickListener(this);
+
 
         // [FINISH: INIT FIREBASE]
 
@@ -124,11 +127,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        FirebaseAuth.getInstance().signOut();
-        mGoogleSignInClient.signOut();
-        Intent i = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(i);
-        finish();
+
+        if(v.getId() == R.id.btnLogout){
+            FirebaseAuth.getInstance().signOut();
+            mGoogleSignInClient.signOut();
+            Intent i = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(i);
+            finish();
+        }else if(v.getId() == R.id.btnUpdate){
+            Intent i = new Intent(MainActivity.this, DataHaidActivity.class);
+            i.putExtra("UPDATE", "111");
+            startActivity(i);
+        }
+
 
 
     }
