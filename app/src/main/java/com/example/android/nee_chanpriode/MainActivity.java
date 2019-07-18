@@ -77,81 +77,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
 
-//        ValueEventListener valueEventListener = new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-////                periodeHaid = dataSnapshot.getValue(PeriodeHaid.class);
-////                jumlahHari = periodeHaid.getJml_hari();
-////                siklus = periodeHaid.getSiklus();
-////                tglHaid = periodeHaid.getTgl_haid();
-////                Log.v(TAG, "siklus "+siklus);
-////                Log.v(TAG, "jmlHari "+jumlahHari);
-////                Log.v(TAG, "tglHari "+tglHaid);
-////
-////                HashSet<Date> haid = new HashSet<>();
-////                Calendar startDate = Calendar.getInstance();
-////                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/M/dd");
-////
-////                try {
-////
-////
-////                    Calendar cal = Calendar.getInstance();
-////                    cal.setTime(sdf.parse(tglHaid));
-////
-////                    Date date = cal.getTime();
-////
-////                    Log.v(TAG, "tanggal awal : "+ cal.get(Calendar.DAY_OF_MONTH) +" "+ cal.get(Calendar.MONTH));
-////
-////                    int tahun = cal.get(Calendar.YEAR);
-////                    int bulan = cal.get(Calendar.MONTH);
-////                    int hari = cal.get(Calendar.DAY_OF_MONTH);
-////
-////                    for(int th = 0; th < 36; th++){
-////                        for(int i = 0; i < siklus; i++){
-////                            if( i < jumlahHari){
-////                                if(hari == 1){
-////                                    bulan = bulan + 1;
-////                                    cal.set(tahun, bulan, hari);
-////                                    events.add(cal.getTime());
-////                                }else if(bulan == 0){
-////                                    tahun = tahun + 1;
-////                                    cal.set(tahun, bulan, hari);
-////                                    events.add(cal.getTime());
-////                                }
-////                                else{
-////                                    cal.set(tahun, bulan, hari);
-////                                    events.add(cal.getTime());
-////                                }
-////                            }
-////
-////                            hari++;
-////
-////                            Log.v(TAG, "date : "+ date.getTime());
-////                        }
-////                    }
-////
-////
-////                    calendarView.updateCalendar(events);
-////
-////
-////                } catch (ParseException e) {
-////                    e.printStackTrace();
-////                }
-////
-////
-////
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-//            }
-//        };
-//        mReference.addListenerForSingleValueEvent(valueEventListener);
-
         // [START: INIT TOOLBAR]
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -190,20 +115,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn.setOnClickListener(this);
 
 
-//        Log.v(TAG, "siklus "+siklus);
-//        Log.v(TAG, "jmlHari "+jumlahHari);
-//        Log.v(TAG, "tglHari "+tglHaid);
-
-
-//        startDate.set(Calendar.YEAR, Calendar.MONTH, 12);
-//        for(int i = 0; i < jumlahHari; i++){
-////            haid.add();
-//        }
-
-//        Log.v(TAG, "hari " + jumlahHari);
-//        Log.v(TAG, "siklus " + siklus);
-//        Log.v(TAG, "tglHaid " + tglHaid);
-
         // [FINISH: INIT FIREBASE]
 
 
@@ -226,14 +137,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-//                if(dataSnapshot.getValue(PeriodeHaid.class) == null){
-//                    Intent i = new Intent(MainActivity.this, DataHaidActivity.class);
-//                    startActivity(i);
-//                    finish();
-//                }else{
-//                    periodeHaid = dataSnapshot.getValue(PeriodeHaid.class);
-//                }
 
                 periodeHaid = dataSnapshot.getValue(PeriodeHaid.class);
                 jumlahHari = periodeHaid.getJml_hari();
@@ -318,9 +221,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (item.getItemId()==R.id.bt_about){
             startActivity(new Intent(this, AboutActivity.class));
         } else if (item.getItemId() == R.id.bt_update) {
-            startActivity(new Intent(this, DataHaidActivity.class));
+
+            Intent i = new Intent(MainActivity.this, DataHaidActivity.class);
+            startActivity(i);
+
         } else if (item.getItemId() == R.id.btnLogout) {
-            startActivity(new Intent(this, MainActivity.class));
+            FirebaseAuth.getInstance().signOut();
+            mGoogleSignInClient.signOut();
+            Intent i = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(i);
+            finish();
+
         }
 
         return true;

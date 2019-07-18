@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -69,10 +70,10 @@ public class UpdateActivity extends AppCompatActivity {
                         + (datePicker1.getMonth() + 1) + "/"
                         + datePicker1.getDayOfMonth();
                 Toast.makeText(UpdateActivity.this, mTanggal, Toast.LENGTH_SHORT).show();
-                updateData(user.getUid()
-                        , Integer.parseInt(editSiklus1.getText().toString())
-                        , Integer.parseInt(editJmlHaid1.getText().toString())
-                        , mTanggal);
+//                updateData(user.getUid()
+//                        , Integer.parseInt(editSiklus1.getText().toString())
+//                        , Integer.parseInt(editJmlHaid1.getText().toString())
+//                        , mTanggal);
 
             }
 
@@ -89,23 +90,32 @@ public class UpdateActivity extends AppCompatActivity {
 
                 }
             }
-        private void updateData(Periode newPeriod) {
 
-         mDatabase.child("periode")
-            .child(periode.getKey())
-          .setValue(periode)
-         .addOnSuccessListener(this, new OnSuccessListener<Void>() {
-         @Override
-         public void onSuccess(Void aVoid) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        Snackbar.make(findViewById(R.id.btn_InputData), "Data berhasil diupdatekan", Snackbar.LENGTH_LONG).setAction("Oke", new View.OnClickListener() {
-           @Override
-        public void onClick(View view) {
-               finish();
-        }
-        }).show();
-         }
-         });
+            }
+        });
+
+//        private void updateData(Periode newPeriod) {
+//
+//         mDatabase.child("periode")
+//            .child(periode.getKey())
+//          .setValue(periode)
+//         .addOnSuccessListener(this, new OnSuccessListener<Void>() {
+//         @Override
+//         public void onSuccess(Void aVoid) {
+//
+//        Snackbar.make(findViewById(R.id.btn_InputData), "Data berhasil diupdatekan", Snackbar.LENGTH_LONG).setAction("Oke", new View.OnClickListener() {
+//           @Override
+//        public void onClick(View view) {
+//               finish();
+//        }
+//        }).show();
+//         }
+//         });
+//
+//    }
 
     }
 }
