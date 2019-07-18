@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        mReference.addListenerForSingleValueEvent(valueEventListener);
 
         // [START: INIT TOOLBAR]
-        Toolbar toolbar = findViewById(R.id.main_toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // [FINISH: INIT TOOLBAR]
 
